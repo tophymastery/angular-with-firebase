@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+<body>
+    <div ng-app="app" ng-controller="userProfile">
+        First Name: <input type="text" ng-model="firstName"><br> 
+        Last Name: <input type="text" ng-model="lastName"><br>
+        National: <input type="text" ng-model="national"><br>
+        <br> Your profile is: {{fullName()}}
+    </div>
+</body>
+
+</html>
+
+<script>
+var app = angular.module('app', []);
+app.controller('userProfile', function($scope) {
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
+    $scope.national = "Thai";
+    $scope.fullName = function() {
+        return $scope.firstName + " " + $scope.lastName + ", " + $scope.national;
+    };
+});
+</script>
