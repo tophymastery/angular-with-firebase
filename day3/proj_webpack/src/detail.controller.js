@@ -6,8 +6,6 @@ class DetailController {
         this.type = $stateParams.type
         this.data = $stateParams.data
         this.list = []
-
-        console.log("$stateParams.type = " + $stateParams.type + ", $stateParams.data =" + $stateParams.data)
         
         $http.get(LIB_URL)
             .then((res) => res.data)
@@ -15,7 +13,6 @@ class DetailController {
                 this.list = _(res)
                     .filter((track) => track[this.type] === this.data)
                     .value()
-            console.log(this.list)
             })
     }
 }
