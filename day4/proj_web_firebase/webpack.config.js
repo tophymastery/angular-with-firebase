@@ -28,14 +28,14 @@ module.exports = {
     // ],
     loaders: [
       { test: /\.js$/, exclude: /(web_modules|node_modules|bower_components)/, loader: 'babel?presets[]=es2015&presets[]=stage-0' },
-      // { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'file?name=assets/images/[hash].[ext]' },
-      // { test: /\.(ttf|eot)(\?[a-z0-9\.=]+)?$/, loader: 'file?name=assets/fonts/[hash].[ext]' },
+      { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'file?name=assets/images/[hash].[ext]' },
+      { test: /\.(ttf|eot)(\?[a-z0-9\.=]+)?$/, loader: 'file?name=assets/fonts/[hash].[ext]' },
       { test: /\.html?$/, loader: 'html' },
       // { test: /\.html?$/, loader: 'html?minimize=true&attrs[]=img:src&attrs[]=img:fallback-src' },
       // { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
-      // { test: /\.css$/, loaders: ['style', 'css'] },
-      // { test: /\.woff$/, loader: 'url?limit=10000&mimetype=application/font-woff&name=assets/fonts/[hash].[ext]' },
-      // { test: /\.woff2$/, loader: 'url?limit=10000&mimetype=application/font-woff2&name=assets/fonts/[hash].[ext]' }
+      { test: /\.css$/, loaders: ['style', 'css'] },
+      { test: /\.woff$/, loader: 'url?limit=10000&mimetype=application/font-woff&name=assets/fonts/[hash].[ext]' },
+      { test: /\.woff2$/, loader: 'url?limit=10000&mimetype=application/font-woff2&name=assets/fonts/[hash].[ext]' }
     ]
   },
   plugins: [
