@@ -1,7 +1,7 @@
 import firebase from 'firebase'
 
-Config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider']
 export default function Config ($stateProvider, $urlRouterProvider, $locationProvider) {
+    'ngInject'
     firebase.initializeApp({
         apiKey: 'AIzaSyBYrjsGKdjGVYy7kaVEvEizvPAVhcFfJAE',
         authDomain: 'angular-cause.firebaseapp.com',
@@ -15,9 +15,18 @@ export default function Config ($stateProvider, $urlRouterProvider, $locationPro
 
     $stateProvider
         .state('auth', {
-            url: '/',
+            abstract: true,
             template: require('./views/auth.html'),
             controller: 'AuthController',
             controllerAs: 'vm'
         })
+        .state('auth.signin', {
+            url: '/',
+            template: require('./views/signin.html')
+        })
+        .state('auth.register', {
+            url: '/register',
+            template: require('./views/register.html')
+        })
+
 }

@@ -27,7 +27,7 @@ module.exports = {
     //   { test: /\.js$/, loader: 'standard', exclude: /(web_modules|node_modules|bower_components)/ }
     // ],
     loaders: [
-      { test: /\.js$/, exclude: /(web_modules|node_modules|bower_components)/, loader: 'babel?presets[]=es2015&presets[]=stage-0' },
+      { test: /\.js$/, exclude: /(web_modules|node_modules|bower_components)/, loader: 'ng-annotate!babel?presets[]=es2015&presets[]=stage-0' },
       { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'file?name=assets/images/[hash].[ext]' },
       { test: /\.(ttf|eot)(\?[a-z0-9\.=]+)?$/, loader: 'file?name=assets/fonts/[hash].[ext]' },
       { test: /\.html?$/, loader: 'html' },
@@ -41,7 +41,7 @@ module.exports = {
   plugins: [
     // new webpack.optimize.DedupePlugin(),
     // new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: { keep_fnames: true }, sourcemap: false, compress: { warnings: false } }),
+    // new webpack.optimize.UglifyJsPlugin({ mangle: { keep_fnames: true }, sourcemap: false, compress: { warnings: false } }),
     // new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.[hash].js', minChunks: Infinity }),
     new HtmlWebpackPlugin({
       inject: true,
