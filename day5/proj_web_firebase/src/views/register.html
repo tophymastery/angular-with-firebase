@@ -1,23 +1,16 @@
 <div class="ui form">
-<label>Email</label>
-    <input ng-model="vm.email ">
-</div>
-    
-</div>
-<div class="field ">
-    <label>Password</label>
-    <input type="password " ng-model="vm.password ">
-</div>
+    <div class="field">
+        <label>Email</label>
+        <input ng-model="vm.email ">
+    </div>
+    <div class="field">
+        <label>Password</label>
+        <input type="password" ng-model="vm.password ">
+    </div>
 
-<div class="ui basic right aligned segment">
-    <a ui-sref="register">Register </a>
+<div class="ui basic left aligned segment">
+    <a ui-sref="auth.signin"> <i class="left chevron icon"></i> Sign In</a>
 </div>
+    <button ng-click="vm.signUp() " class="ui green submit fluid button ">Sign Up</button>
 
-<button ng-click="vm.signIn() " class="ui blue submit fluid button " ng-class="{loading: vm.signInLoading} ">Sign In</button>
-<br>
-<button ng-click="vm.signUp() " class="ui green submit fluid button ">Sign Up</button>
-<br>
-<button ng-click="vm.googleSignIn() " class="ui red fluid button ">Google Sign In</button>
-<br>
-<button ng-click="vm.signOut() " class="ui pink fluid button "> Sign Out</button>
-</form>
+</div>

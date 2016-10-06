@@ -16,17 +16,34 @@ export default function Config ($stateProvider, $urlRouterProvider, $locationPro
     $stateProvider
         .state('auth', {
             abstract: true,
-            template: require('./views/auth.html'),
-            controller: 'AuthController',
-            controllerAs: 'vm'
+            template: require('./views/auth.html')
         })
         .state('auth.signin', {
             url: '/',
-            template: require('./views/signin.html')
+            template: require('./views/signin.html'),
+            controller: 'SignInController',
+            controllerAs: 'vm'
         })
         .state('auth.register', {
             url: '/register',
-            template: require('./views/register.html')
+            template: require('./views/register.html'),
+            controller: 'RegisterController',
+            controllerAs: 'vm'
+        })
+        .state('layout', {
+            template: require('./views/layout.html')
+        })
+        .state('home', {
+            url: '/home',
+            parent: 'layout',
+            template: require('./views/home.html'),
+            controller: 'HomeController',
+            controllerAs: 'vm'
+        })
+        .state('profile', {
+            url: '/profile',
+            parent: 'layout',
+            template: require('./views/profile.html')
         })
 
 }
