@@ -13,6 +13,9 @@ export class SignInController {
                 console.log(res)
                 this.signInLoading = false
                 this.$state.go('home')
+            }, (err) => {
+                this.signInLoading = false
+                window.alert(err.message)
             })
     }
 
