@@ -1,0 +1,34 @@
+<div class="ui fluid container">
+    <div class="ui center aligned grid">
+        <div class="row">
+            <div class="column">
+                <img class="ui centered image" src="../assets/acourse.svg" style="width: 220px; height: 220px">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <h1>Tophy Cause</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ui center aligned stacled segment" style="min-width: 500px;">
+                <div class="ui left aligned fluid container">
+                    <div class="ui center aligned header fluid container">Register</div>
+                    <form class="ui form"">
+                        <div class="field">
+                            <label>Email</label>
+                            <input ng-model="vm.email">
+                        </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <input type="password" ng-model="vm.password">
+                        </div>
+                        <a class="ui left aligned fluid basic container" ui-sref="auth">Back</a>
+                        <button ng-click="vm.signUp()" class="ui green submit fluid button" ng-class="{loading: vm.signInLoading}">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
