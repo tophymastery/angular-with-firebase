@@ -15,6 +15,7 @@ export class EditProfileController {
                 console.log(profile)
                 this.name = profile.name
                 this.aboutMe = profile.aboutMe
+                this.photo = profile.photo
             })
     }
 
@@ -22,11 +23,20 @@ export class EditProfileController {
         this.saving = true
         this.$me.saveProfile({
             name: this.name,
-            aboutMe: this.aboutMe
+            aboutMe: this.aboutMe,
+            photo: this.photo
         })
             .then(() => {
                 this.saving = false
                 this.$state.go('profile')
+            })
+    }
+
+    selectedFile (file) {
+        if (!file) return
+        this.$me.upload(file.files[0])
+            .subscribe((res) => {
+                this.photo = res
             })
     }
 }

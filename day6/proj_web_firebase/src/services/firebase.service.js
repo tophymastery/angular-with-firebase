@@ -2,18 +2,23 @@ import firebase from 'firebase'
 import { Observable, BehaviorSubject } from 'rxjs'
 
 export class FirebaseService {
-    constructor($rootScope) {
+    constructor($q, $rootScope) {
         'ngInject'
 
-        this.$rootScope = $rootScope
-        this.currentUser = new BehaviorSubject(undefined)
+        this.$q = $q
+        this.$rootScope = $rootScope        
+        this._currentUser = new BehaviorSubject()
 
         firebase.auth().onAuthStateChanged((user) => {
-            console.log(user)
-            this.currentUser.next(user)
+            this._currentUser.next(user)
         })
 
         firebase.database().ref('user').on('value', () => {})
+    }
+
+    currentUser() {
+        console.log('currentUser function')
+        return this._currentUser.filter((x) => x !== undefined)
     }
 
     signOut() {
@@ -29,14 +34,14 @@ export class FirebaseService {
 
     signInWithGoogle() {
         const provider = new firebase.auth.GoogleAuthProvider()
-        return $q((resolve, reject) => {
+        return this.$q((resolve, reject) => {
             firebase.auth().signInWithRedirect(provider)
                 .then(resolve, reject)
         })
     }
 
     createUserWithEmailAndPassword(email, password) {
-        return $q((resolve, reject) => {
+        return this.$q((resolve, reject) => {
             firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then(resolve, reject)
         })
@@ -74,6 +79,26 @@ export class FirebaseService {
                     callback(snapshot.val())
                 })
             }, 0)
+        })
+    }
+
+    upload (path, file) {
+        return Observable.create((o) => {
+            firebase.storage().ref(path).put(file)
+                .then((res) => {
+                    setTimeout(() => {
+                        this.$rootScope.$apply(() => {
+                        o.next(res)
+                        o.complete()
+                    })
+                    }, 0)
+                }, (err) => {
+                    setTimeout(() => {
+                        this.$rootScope.$apply(() => {
+                        o.error(err)
+                    })
+                    }, 0);
+                })
         })
     }
 }
