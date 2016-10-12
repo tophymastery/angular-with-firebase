@@ -1,0 +1,8 @@
+<div class="ui basic segment">
+    <h2 class="ui header">All Courses</h2>
+    <div class="ui cards">
+        <course-card ng-repeat="x in $ctrl.course" course="x" class="card">
+            {{ x.name }}
+        </course-card>
+    </div>
+</div>
