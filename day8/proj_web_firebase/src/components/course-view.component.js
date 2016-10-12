@@ -1,8 +1,9 @@
 class CourseViewController {
-    constructor($course, $state) {
+    constructor($course, $state, $firebase) {
         'ngInject'
 
         this.$course = $course
+        this.$firebase = $firebase
         this.courseId = $state.params.id
         this.course = null
     }
@@ -11,6 +12,12 @@ class CourseViewController {
         this.course$ = this.$course.get(this.courseId)
             .subscribe((course) => {
                 this.course = course
+            })
+
+        this.$firebase.currentUser()
+            .first()
+            .subscribe(({uid}) => {
+                this.userId = uid
             })
     }
 

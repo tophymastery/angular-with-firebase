@@ -66,6 +66,16 @@ export default function Config ($stateProvider, $urlRouterProvider, $locationPro
             parent: 'layout',
             template: '<course-view></course-view>'
         })
+        .state('course-edit', {
+            url: '/course/:id/edit',
+            parent: 'layout',
+            template: '<course-edit></course-edit>'
+        })
+        .state('course-chat', {
+            url: '/course/:id/chat',
+            parent: 'layout',
+            template: '<course-chat></course-chat>'
+        })
 
 }
 

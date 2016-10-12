@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs'
+
 class ProfileController {
     constructor ($me) {
         'ngInject'
@@ -5,14 +7,23 @@ class ProfileController {
         this.name = ''
         this.aboutMe = ''
         this.photo = ''
+        this.courses = []
 
-        $me.getProfile()
+        this.profile$ = Observable.combineLatest(
+            $me.getProfile(),
+            $me.myOwnCourse()
+        )
             .subscribe(
-                (profile) => {
+                ([profile, courses]) => {
                     this.name = profile.name
                     this.aboutMe = profile.aboutMe
                     this.photo = profile.photo
+                    this.courses = courses
                 })
+    }
+
+    $onDestroy() {
+        this.profile$.unsubscribe()
     }
 }
 

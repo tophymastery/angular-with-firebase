@@ -1,8 +1,9 @@
 export class MeService {
-    constructor($firebase) {
+    constructor($firebase, $course) {
         'ngInject'
 
         this.$firebase = $firebase
+        this.$course = $course
     }
 
     saveProfile(profile) {
@@ -20,5 +21,10 @@ export class MeService {
         return this.$firebase.currentUser()
             .flatMap(({ uid }) => this.$firebase.upload(`user/${uid}/${Date.now()}`, file))
             .map((res) => res.downloadURL)
+    }
+
+    myOwnCourse () {
+        return this.$firebase.currentUser()
+            .flatMap(({uid}) => this.$course.ownCourses(uid))
     }
 }

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "angular-cause"
+    "default": "angular-cause",
+    "staging": "angular-staging"
   }
 }
