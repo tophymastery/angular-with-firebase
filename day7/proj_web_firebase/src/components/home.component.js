@@ -8,10 +8,14 @@ class HomeController {
     }
 
     $onInit() {
-        this.$course.list()
+        this.sub = this.$course.list()
             .subscribe((courses) => {
                 this.course = courses
             })
+    }
+
+    $onDestroy() {
+        this.sub.unsubscribe()
     }
 }
 

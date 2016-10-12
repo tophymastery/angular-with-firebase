@@ -5,7 +5,6 @@ class CourseViewController {
         this.$course = $course
         this.courseId = $state.params.id
         this.course = null
-        
     }
 
     $onInit() {
@@ -16,7 +15,7 @@ class CourseViewController {
     }
 
     $onDestroy() {
-        this.course$.ubsubscribe()
+        this.course$.unsubscribe()
     }
 }
 
