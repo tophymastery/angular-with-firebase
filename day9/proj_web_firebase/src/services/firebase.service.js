@@ -10,6 +10,29 @@ export class FirebaseService {
         this.$rootScope = $rootScope
         this._currentUser = new BehaviorSubject()
 
+        let $currentUser
+
+        firebase.database().ref('.info/connected').on('value', (snapshot) => {
+            const connected = snapshot.val()
+            if ($currentUser) {
+                $currentUser.unsubscribe()
+                $currentUser = null
+            }
+            if (connected) {
+                const onlineRef = firebase.database().ref('online').push()
+                onlineRef.onDisconnect().remove()
+                onlineRef.set(true)
+                $currentUser = this.currentUser()
+                    .subscribe(
+                        (user) => {
+                            if (user) {
+                                onlineRef.set(user.uid)
+                            }
+                        }
+                    )
+            }
+        })
+
         firebase.auth().onAuthStateChanged((user) => {
             this._currentUser.next(user)
         })
@@ -161,7 +184,7 @@ export class FirebaseService {
         return firebase.database().ref(path)
     }
 
-    onChildAdded (ref) {
+    onChildAdded(ref) {
         return Observable.create((o) => {
             ref = _.isString(ref) ? this.ref(ref) : ref
             const fn = ref.on('child_added', (snapshot) => {

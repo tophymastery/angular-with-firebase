@@ -9,4 +9,8 @@ export class UserService {
         return this.$firebase.onValue(`user/${id}`)
     }
 
+    isInstructor (id) {
+        return this.$firebase.onValue(`instructor/${id}`)
+    }
+
 }

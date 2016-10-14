@@ -45,7 +45,20 @@ export class CourseService {
     applyCourse(id, userId) {
         console.log('userId in applyCourse (course) = ' + userId)
         return this.$firebase.set(`course/${id}/student/${userId}`, true)
+            .flatMap(() => this.$firebase.set(`userCourse/${user_id}/${id}`, true))
     }
 
+    favorite (id, userId) {
+        return this.$firebase.set(`course/${id}/favorite/${userId}`, true)
+    }
+
+    unfavorite (id, userId) {
+        return this.$firebase.remove(`course/${id}/favorite/${userId}`)
+    }
+
+    user (userId) {
+        const ref = this.$firebase.ref('course').orderByChild(`student/${userId}`).equalTo(true)
+        return this.$firebase.onArrayValue(ref)
+    }
 
 }
