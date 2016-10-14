@@ -1,6 +1,6 @@
 <div class="ui segment">
     <div ng-repeat="x in $ctrl.messages">
-        {{ x.user.name }} {{ x.m }} {{ x.t }}
+        {{ x.user.name }} {{ x.m }} ({{ x.t | date}})
     </div>
     <div class="ui input">
         <input ng-model="$ctrl.currentMessage">

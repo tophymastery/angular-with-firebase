@@ -27,4 +27,10 @@ export class MeService {
         return this.$firebase.currentUser()
             .flatMap(({uid}) => this.$course.ownCourses(uid))
     }
+
+    applyCourse(id) {
+        console.log('userId in applyCourse (me) = ' + userId)
+        return this.$firebase.currentUser()
+            .flatMap(({uid}) => this.$course.applyCourse(id, uid))
+    }
 }

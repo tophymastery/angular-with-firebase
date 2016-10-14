@@ -41,4 +41,11 @@ export class CourseService {
         const ref = this.$firebase.ref(`chat/${id}`).limitToLast(10)
         return this.$firebase.onChildAdded(ref)
     }
+
+    applyCourse(id, userId) {
+        console.log('userId in applyCourse (course) = ' + userId)
+        return this.$firebase.set(`course/${id}/student/${userId}`, true)
+    }
+
+
 }

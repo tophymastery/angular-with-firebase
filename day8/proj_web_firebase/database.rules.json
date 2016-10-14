@@ -29,6 +29,11 @@
         "open": {
           ".validate": "newData.isBoolean()"
         },
+        "student": {
+          "$user_id": {
+            ".validate": "newData.val() === true"
+          }
+        },
         "$other": {
           ".validate": false
         }
