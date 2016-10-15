@@ -1,13 +1,13 @@
 export class LayoutController {
-    constructor ($firebase, $state) {
-        'ngInject'
+  constructor ($firebase, $state) {
+    'ngInject'
 
-        this.$firebase = $firebase
-        this.$state = $state
-    }
+    this.$firebase = $firebase
+    this.$state = $state
+  }
 
-    signOut() {
-        this.$firebase.signOut()
-        this.$state.go('auth.signin')
-    }
+  signOut () {
+    this.$firebase.signOut()
+    this.$state.go('auth.signin')
+  }
 }

@@ -1,26 +1,26 @@
 class HomeController {
-    constructor ($course, $state) {
-        'ngInject'
+  constructor ($course, $state) {
+    'ngInject'
 
-        this.$course = $course
-        this.$state = $state
-        this.course = []
-    }
+    this.$course = $course
+    this.$state = $state
+    this.course = []
+  }
 
-    $onInit() {
-        this.sub = this.$course.list()
-            .subscribe((courses) => {
-                this.course = courses
-            })
-    }
+  $onInit () {
+    this.sub = this.$course.list()
+      .subscribe((courses) => {
+        this.course = courses
+      })
+  }
 
-    $onDestroy() {
-        this.sub.unsubscribe()
-    }
+  $onDestroy () {
+    this.sub.unsubscribe()
+  }
 }
 
 export default {
-    selector: 'home',
-    template: require('./home.component.html'),
-    controller: HomeController
+  selector: 'home',
+  template: require('./home.component.html'),
+  controller: HomeController
 }

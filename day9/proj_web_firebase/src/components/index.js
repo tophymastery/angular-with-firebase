@@ -9,13 +9,13 @@ import CourseFormComponent from './course-form.component'
 import CourseChatComponent from './course-chat.component'
 
 export default [
-    ProfileComponent,
-    ProfileEditComponent,
-    CourseCreateComponent,
-    CourseCardComponent,
-    CourseViewComponent,
-    HomeComponent,
-    CourseEditComponent,
-    CourseFormComponent,
-    CourseChatComponent,
+  ProfileComponent,
+  ProfileEditComponent,
+  CourseCreateComponent,
+  CourseCardComponent,
+  CourseViewComponent,
+  HomeComponent,
+  CourseEditComponent,
+  CourseFormComponent,
+  CourseChatComponent
 ]

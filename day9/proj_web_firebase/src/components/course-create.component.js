@@ -1,21 +1,21 @@
 class CourseCreateController {
-    constructor ($course, $state) {
-        'ngInject'
+  constructor ($course, $state) {
+    'ngInject'
 
-        this.$course = $course
-        this.$state = $state
-    }
+    this.$course = $course
+    this.$state = $state
+  }
 
-    submit(model) {
-        this.$course.create(model)
-            .subscribe((res) => {
-                this.$state.go('course-view', { id: res.key })
-            })
-    }
+  submit (model) {
+    this.$course.create(model)
+      .subscribe((res) => {
+        this.$state.go('course-view', { id: res.key })
+      })
+  }
 }
 
 export default {
-    selector: 'courseCreate',
-    template: require('./course-create.component.html'),
-    controller: CourseCreateController
+  selector: 'courseCreate',
+  template: require('./course-create.component.html'),
+  controller: CourseCreateController
 }
