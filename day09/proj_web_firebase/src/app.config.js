@@ -2,6 +2,7 @@ import firebase from 'firebase'
 
 export default function Config ($stateProvider, $urlRouterProvider, $locationProvider) {
   'ngInject'
+
   firebase.initializeApp({
     apiKey: 'AIzaSyBYrjsGKdjGVYy7kaVEvEizvPAVhcFfJAE',
     authDomain: 'angular-cause.firebaseapp.com',
